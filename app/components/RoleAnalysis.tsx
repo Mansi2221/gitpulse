@@ -118,9 +118,9 @@ function extractSignals(report: PulseReport): Signals {
 
   const all = `${repoText} ${topicsAll.join(" ")}`;
 
-  const hasDocker     = /docker|container|compose/.test(all);
-  const hasCICD       = /github.action|ci\/cd|ci-cd|workflow|jenkins|circleci|travis/.test(all) ||
-                        report.repos.some((r) => r.topics.some((t) => /ci|cd|pipeline/.test(t)));
+  const hasDocker     = /docker|container|compose|dockerfile|devops/.test(all);
+  const hasCICD       = /github.action|github-action|ci\/cd|ci-cd|cicd|workflow|jenkins|circleci|travis|devops/.test(all) ||
+                        report.repos.some((r) => r.topics.some((t) => /ci|cd|pipeline|github-action|devops/.test(t)));
   const hasTests      = /test|spec|jest|pytest|unittest|coverage/.test(all);
   const hasFrontend   = languages.some((l) => ["typescript","javascript","html","css","vue","svelte"].includes(l)) ||
                         /react|next\.?js|vue|svelte|tailwind|frontend|ui/.test(all);
