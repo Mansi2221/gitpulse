@@ -417,28 +417,30 @@ function ScoreRing({ score }: { score: number }) {
     "Low Fit";
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <svg width="130" height="130" className="-rotate-90">
-        <circle
-          cx="65" cy="65" r={radius}
-          fill="none"
-          stroke="#1e293b"
-          strokeWidth="10"
-        />
-        <circle
-          cx="65" cy="65" r={radius}
-          fill="none"
-          stroke={color}
-          strokeWidth="10"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-          style={{ transition: "stroke-dashoffset 0.8s ease" }}
-        />
-      </svg>
-      <div className="absolute flex flex-col items-center pointer-events-none" style={{ marginTop: "-4px" }}>
-        <span className="text-4xl font-bold font-mono" style={{ color }}>{score}</span>
-        <span className="text-xs text-[#64748b] mt-0.5">/ 100</span>
+    <div className="flex flex-col items-center gap-3">
+      <div className="relative w-[140px] h-[140px]">
+        <svg width="140" height="140" className="-rotate-90">
+          <circle
+            cx="70" cy="70" r={radius}
+            fill="none"
+            stroke="#1e293b"
+            strokeWidth="8"
+          />
+          <circle
+            cx="70" cy="70" r={radius}
+            fill="none"
+            stroke={color}
+            strokeWidth="8"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+            style={{ transition: "stroke-dashoffset 0.8s ease" }}
+          />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-4xl font-bold" style={{ color }}>{score}</span>
+          <span className="text-xs text-[#64748b]">/ 100</span>
+        </div>
       </div>
       <span
         className="text-xs font-semibold px-3 py-1 rounded-full"
