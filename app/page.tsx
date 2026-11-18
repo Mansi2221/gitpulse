@@ -14,6 +14,15 @@ const Dashboard = dynamic(() => import("@/app/components/Dashboard"), {
   ),
 });
 
+const RoleAnalysis = dynamic(() => import("@/app/components/RoleAnalysis"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex justify-center py-10">
+      <div className="w-8 h-8 rounded-full border-2 border-transparent border-t-[#58a6ff] animate-spin" />
+    </div>
+  ),
+});
+
 const CompareView = dynamic(() => import("@/app/components/CompareView"), {
   ssr: false,
   loading: () => (
@@ -119,6 +128,7 @@ export default function Home() {
       </div>
 
       {data && <Dashboard data={data} />}
+      {data && <RoleAnalysis data={data} />}
       {compareData && <CompareView left={compareData.left} right={compareData.right} />}
     </main>
   );
