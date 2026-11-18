@@ -1,9 +1,18 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import SearchBar from "@/app/components/SearchBar";
-import Dashboard from "@/app/components/Dashboard";
 import type { PulseReport } from "@/app/types";
+
+const Dashboard = dynamic(() => import("@/app/components/Dashboard"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex justify-center py-20">
+      <div className="w-10 h-10 rounded-full border-2 border-transparent border-t-[#58a6ff] animate-spin" />
+    </div>
+  ),
+});
 
 export default function Home() {
   const [data, setData] = useState<PulseReport | null>(null);
