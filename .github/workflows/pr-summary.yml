@@ -1,0 +1,16 @@
+name: AI PR Summary
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Mansi2221/ai-pr-summary@v1
+        with:
+          api-key: ${{ secrets.ANTHROPIC_API_KEY }}
